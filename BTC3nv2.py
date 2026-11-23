@@ -1,23 +1,33 @@
-"""
-Bài tập lập trình đầu tiên: Tính tổng các số chẵn trong đoạn [a, b]
-"""
+#include <iostream>
+#include <algorithm>
+using namespace std;
 
-def tong_so_chan(a: int, b: int) -> int:
-    """Tính tổng các số nguyên chẵn trong đoạn [a, b] (bao gồm cả a và b)."""
-    if a > b:
-        a, b = b, a
-    return sum(x for x in range(a, b + 1) if x % 2 == 0)
+long long tongSoChan(long long a, long long b) {
+    if (a > b) swap(a, b);
+    long long tong = 0;
+    for (long long x = a; x <= b; x++) {
+        if (x % 2 == 0) tong += x;
+    }
+    return tong;
+}
 
+int main() {
+    long long a, b;
 
-def main() -> None:
-    try:
-        a = int(input("Nhập số nguyên a: "))
-        b = int(input("Nhập số nguyên b: "))
-        ket_qua = tong_so_chan(a, b)
-        print(f"Tổng các số chẵn trong đoạn [{a}, {b}] là: {ket_qua}")
-    except ValueError:
-        print("Vui lòng nhập hai số nguyên hợp lệ!")
+    cout << "Nhap so nguyen a: ";
+    if (!(cin >> a)) {
+        cout << "Vui long nhap hai so nguyen hop le!" << endl;
+        return 0;
+    }
 
+    cout << "Nhap so nguyen b: ";
+    if (!(cin >> b)) {
+        cout << "Vui long nhap hai so nguyen hop le!" << endl;
+        return 0;
+    }
 
-if __name__ == "__main__":
-    main()
+    long long ketQua = tongSoChan(a, b);
+    cout << "Tong cac so chan trong doan [" << a << ", " << b << "] la: " << ketQua << endl;
+
+    return 0;
+}
